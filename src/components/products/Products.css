@@ -34,7 +34,7 @@
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  height: 80%;
+  height: 30%;
   background: white;
   text-transform: capitalize;
 }
@@ -42,7 +42,7 @@
 .product-info {
   opacity: 0;
   width: 100%;
-  height: 75%;
+  height: 71%;
   position: absolute;
   top: 0;
   left: 0;
