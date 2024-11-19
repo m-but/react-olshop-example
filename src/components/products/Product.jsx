@@ -1,8 +1,11 @@
 import React from "react";
 import { CiSearch, CiShoppingCart } from "react-icons/ci";
 import "./Products.css";
+import { useNavigate } from "react-router-dom";
 
 function Product({ items, heading }) {
+  const navigate = useNavigate();
+
   return (
     <div>
       <h1 className="heading">{heading}</h1>
@@ -19,7 +22,13 @@ function Product({ items, heading }) {
               <button className="icon">
                 <CiShoppingCart /> Add to Cart
               </button>
-              <button className="icon">
+              <button
+                className="icon"
+                onClick={() => {
+                  navigate(`/product/${item.id}`);
+                  window.scrollTo(0, 0);
+                }}
+              >
                 <CiSearch /> View Details
               </button>
             </div>
