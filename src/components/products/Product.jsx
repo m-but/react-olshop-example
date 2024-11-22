@@ -2,9 +2,16 @@ import React from "react";
 import { CiSearch, CiShoppingCart } from "react-icons/ci";
 import "./Products.css";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../pages/redux/cartSlice";
 
 function Product({ items, heading }) {
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  };
 
   return (
     <div>
@@ -19,7 +26,7 @@ function Product({ items, heading }) {
             </div>
 
             <div className="product-info">
-              <button className="icon">
+              <button className="icon" onClick={() => handleAddToCart(item)}>
                 <CiShoppingCart /> Add to Cart
               </button>
               <button

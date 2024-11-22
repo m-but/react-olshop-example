@@ -4,10 +4,17 @@ import Navbar from "../../components/navbar/Navbar";
 import { useParams } from "react-router-dom";
 import { allProducts } from "../../data";
 import Footer from "../../components/footer/Footer";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/cartSlice";
 
 function SingleProduct() {
   const { id } = useParams();
   const product = allProducts.find((product) => product.id === parseInt(id));
+
+  const dispatch = useDispatch();
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  };
 
   const colors = ["red", "purple", "teal", "green", "black"];
   const [selectedColor, setSelectedColor] = useState(null);
@@ -75,7 +82,9 @@ function SingleProduct() {
             </div>
           </div>
           <div className="addToCart">
-            <button>Add to Cart</button>
+            <button onClick={() => handleAddToCart(product)}>
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>
